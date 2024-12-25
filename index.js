@@ -7,9 +7,11 @@ import productRouter from './routes/productRouter.js';
 import User from './models/user.js';
 import userRouter from './routes/userRouter.js';
 import jwt from "jsonwebtoken";
+import dotenv, { configDotenv } from "dotenv";
+dotenv.config();
 
 const app = express();
-const mongourl="mongodb+srv://admin2:1234@cluster0.8yttb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+const mongourl=process.env.MONGO_DB_URI
 
 mongoose.connect(mongourl,{})
 
@@ -23,10 +25,10 @@ app.use(bodyParser.json())
 
 app.use(
     (req,res,next)=>{
-        console.log(req.header("Authorization"))?.replace("Bearer","")
+        const token= req.header("Authorization")?.replace("Bearer","")
         console.log(token)
         if(token!=null){
-            jwt.verify(token,"cbc-secret-key-7973",(error,decoded)=>{
+            jwt.verify(token,process.env,SECRET,(error,decoded)=>{
                 if(!error){
                     console.log(decoded)
                     req.user=decoded
@@ -47,7 +49,7 @@ app.use("/api/users",userRouter)
 app.listen(
     3000,
     ()=>{
-        console.log('server is running on port 5000');
+        console.log('server is running on port 3000');
     }
 )
 
