@@ -1,5 +1,5 @@
  import mongoose from "mongoose";
- const productSchema=mongoose.Scheema({
+ const productSchema=mongoose.Schema({
     productId:{
         type : String,
         required:true,
