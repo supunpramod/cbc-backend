@@ -1,5 +1,5 @@
 import Order from "../models/order.js";
-
+import { isCustomer } from "./userController.js";
 export async function createOrder(req,res){
    // cbc001
    //take the latest product id

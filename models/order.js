@@ -35,7 +35,7 @@ const orderSchema=mongoose.Schema({
         default:Date.now
     },
     paymentId:{
-        type:String,
+        type:String
       
     },
     status:{
@@ -62,3 +62,4 @@ const orderSchema=mongoose.Schema({
     })
 
 const Order =mongoose.model("orders",orderSchema);
+export default Order;
