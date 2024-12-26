@@ -49,7 +49,7 @@ app.use("/api/users",userRouter)
 app.use("/api/products",productRouter)
 
 app.listen(
-    3000,
+    5000,
     ()=>{
         console.log('server is running on port 3000');
     }
