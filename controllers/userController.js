@@ -88,7 +88,7 @@ export function deleteUser(req,res){
 
 };
 
-export function isAdmin(req){
+export function isAdmin(req,){
     if(req.user==null){
         return false
     }
@@ -98,8 +98,8 @@ export function isAdmin(req){
     return true
 }
 
-export function isAdmin(req){
-    if(req,user==null){
+export function isCustomer(req,){
+    if(req.user==null){
         return false
     }
     if(req.user.type !="customer"){
