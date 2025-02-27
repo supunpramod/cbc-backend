@@ -11,10 +11,14 @@ import productRouter from './routes/productRouter.js';
 import jwt from "jsonwebtoken";
 import dotenv, { configDotenv } from "dotenv";
 import orderRouter from './routes/orderRouter.js';
+import cors from "cors";
+
 dotenv.config();
 
 const app = express();
 const mongourl=process.env.MONGO_DB_URI
+
+app.use(cors())
 
 mongoose.connect(mongourl,{})
 
@@ -53,7 +57,7 @@ app.use("/api/orders",orderRouter)
 app.listen(
     5000,
     ()=>{
-        console.log('server is running on port 3000');
+        console.log('server is running on port 5000');
     }
 )
 
